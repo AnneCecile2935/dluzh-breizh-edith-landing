@@ -1,60 +1,620 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dluzh Breizh Edith</title>
+    <title>Dluzh Breizh Edith | Simplified Fish Farming Management</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { padding-top: 2rem; }
-        .hero { background-color: #f8f9fa; padding: 3rem 0; text-align: center; }
-        .feature { margin-bottom: 2rem; }
-    </style>
+    /* Polices et base */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #172C30; /* Texte principal (900) */
+        background-color: #EEF5F7; /* Arrière-plan page (50) */
+    }
+
+    /* Navigation */
+    .navbar {
+        background-color: #35646E !important; /* 700 */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand, .nav-link {
+        color: #EEF5F7 !important; /* 50 */
+        font-weight: 500;
+    }
+    .nav-link:hover {
+        color: #B0D1D9 !important; /* 200 */
+    }
+
+    /* Section Hero */
+    .hero {
+        background: linear-gradient(135deg, #539CAC 0%, #44808D 100%);
+        background-size: cover;
+        color: #EEF5F7; /* 50 */
+        padding: 5rem 0;
+        text-align: center;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+    }
+    .hero h1, .hero p {
+        color: #EEF5F7; /* 50 */
+    }
+    .btn-primary {
+        background-color: #539CAC;
+				border: none;
+				box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+				transition: all 0.3s;
+    }
+    .btn-primary:hover {
+        background-color: #44808D;
+				transform: translateY(-2px);
+				box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+		.badge text-primary{
+			color: #539CAC;
+		}
+
+    /* Sections et cartes */
+    .feature {
+        margin-bottom: 2rem;
+        text-align: center;
+        padding: 1rem;
+    }
+    .card {
+        background-color: #D5E7EB !important; /* 100 */
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+    }
+    .card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    .feature-icon {
+        font-size: 2.5rem;
+        color: #539CAC; /* 500 */
+        margin-bottom: 1rem;
+    }
+
+    /* Badges */
+    .badge {
+        background-color: #B0D1D9; /* 200 */
+        color: #172C30; /* 900 */
+        border-radius: 20px;
+        padding: 0.5em 1em;
+        font-weight: 500;
+    }
+
+    /* Modales */
+    .modal-content {
+        background-color: #EEF5F7; /* 50 */
+        border-radius: 10px;
+        border: none;
+    }
+    .modal-header {
+        border-bottom: 1px solid #B0D1D9; /* 200 */
+    }
+    .modal-img {
+        max-width: 100%;
+        max-height: 85vh;
+        object-fit: contain;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .modal-backdrop {
+        background-color: rgba(23, 44, 48, 0.7); /* 900 avec transparence */
+    }
+    .zoom-cursor {
+        cursor: zoom-in;
+        transition: transform 0.2s;
+    }
+    .zoom-cursor:hover {
+        transform: scale(1.01);
+    }
+
+    /* Section "Our Story" */
+    .family-story {
+        background-color: #D5E7EB; /* 100 */
+        padding: 2rem;
+        border-radius: 10px;
+        border-left: 4px solid #539CAC; /* 500 */
+    }
+
+    /* Pied de page */
+    footer {
+        background-color: #35646E; /* 700 */
+        color: #EEF5F7; /* 50 */
+        padding: 1rem 0;
+        text-align: center;
+    }
+    footer a {
+        color: #B0D1D9 !important; /* 200 */
+    }
+
+    /* Boutons et liens */
+    .btn-outline-primary {
+        color: #539CAC;
+        border-color: #539CAC;
+    }
+    .btn-outline-primary:hover {
+        background-color: #539CAC;
+        color: #EEF5F7;
+    }
+
+    /* Titre des sections */
+    h2, h3 {
+        color: #26484F; /* 800 */
+    }
+
+    /* Texte muté (secondaire) */
+    .text-muted {
+        color: #44808D !important; /* 600 */
+    }
+
+    /* Icône poisson (Key Features) */
+    .feature-icon i {
+        color: #539CAC; /* 500 */
+    }
+</style>
 </head>
 <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+							<img
+										src="images/logo.jpg"
+										alt="Truites de la Vallée Logo"
+										class="me-2"
+										style="height: 40px; width: auto;"
+								>
+								<span>Dluzh Breizh Edith</span>
+						</a>
+            <div class="navbar-nav">
+                <a class="nav-link" href="#features">Features</a>
+                <a class="nav-link" href="#about">Our Story</a>
+                <a class="nav-link" href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
-        <!-- Section Hero -->
-        <section class="hero">
+        <!-- Hero Section -->
+        <section class="hero" style="
+						background: linear-gradient(rgba(23, 44, 48, 0.6), rgba(23, 44, 48, 0.6)),
+						url('images/aerien.webp');
+						background-size: cover;
+						background-position: center;
+						color: white;
+						padding: 5rem 0;
+						text-align: center;
+						border-radius: 10px;
+						margin-bottom: 2rem;
+						">
             <h1 class="display-4">Dluzh Breizh Edith</h1>
-            <p class="lead">Outil de gestion pour les pisciculteurs bretons – Gain de temps et traçabilité.</p>
-            <a href="mailto:ton-email@example.com" class="btn btn-primary btn-lg">Demander une démo</a>
-            <div class="mt-4">
-                <img src="tableau_bord.png" class="img-fluid rounded" alt="Tableau de bord">
-            </div>
+            <p class="lead">The fish farming management tool designed by fish farmers, for fish farmers.
+						<br>
+						<small class="text-light fw-light">Launching soon – request a demo below!</small>
+						</p>
+            <a href="mailto:anne-cecile.colleter@live.fr?subject=Demo Request for Dluzh Breizh Edith" class="btn btn-primary btn-lg mt-3" target="_blank">
+                <i class="fas fa-paper-link-alt me-2"></i>Request a Demo
+            </a>
         </section>
 
-        <!-- Section Fonctionnalités -->
-        <section class="my-5">
-            <div class="row">
-                <div class="col-md-4 feature">
-                    <h3><i class="fas fa-fish"></i> Suivi des lots</h3>
-                    <p>Centralisez les données de vos bassins et lots en temps réel.</p>
-                </div>
-                <div class="col-md-4 feature">
-                    <h3><i class="fas fa-chart-line"></i> Alertes visuelles</h3>
-                    <p>Identifiez rapidement les bassins nécessitant une attention.</p>
-                </div>
-                <div class="col-md-4 feature">
-                    <h3><i class="fas fa-history"></i> Historique complet</h3>
-                    <p>Accédez à l'historique des actions sur 3 ans.</p>
-                </div>
-            </div>
-        </section>
+        <!-- Features Section -->
+        <section id="features" class="my-6">
+					<h2 class="text-center mb-4">Key Features</h2>
 
-        <!-- Section Contact -->
+					<!-- Feature 1: Lot Tracking -->
+					<!-- Feature 1: Lot Tracking avec zoom -->
+					<div class="row align-items-center mb-5">
+							<div class="col-md-6">
+									<h3 class="fw-bold mb-3" style="color: #2c3e50;">Lot Tracking</h3>
+									<p class="text-muted lh-lg">
+											Easily track your fish lots: weight, quantity, and arrival dates—all in one place.
+											No more paper logs or spreadsheets.
+									</p>
+									<div class="d-flex gap-2 mt-3">
+											<span class="badge" style="background-color: transparent; color: #539CAC; border: 1px solid #539CAC; border-radius: 20px; padding: 0.5em 1em; font-weight: 500;">Real-time updates</span>
+											<span class="badge" style="background-color: transparent; color: #539CAC; border: 1px solid #539CAC; border-radius: 20px; padding: 0.5em 1em; font-weight: 500;">Historical data</span>
+									</div>
+							</div>
+							<div class="col-md-6">
+									<div class="card shadow-lg border-0">
+											<div class="card-body p-0">
+													<!-- Image cliquable pour zoomer -->
+													<img
+															src="images/lot-tracking.png"
+															class="img-fluid rounded zoom-cursor"
+															alt="Lot Tracking Interface"
+															style="width: 100%; object-fit: cover; border-radius: 10px;"
+															data-bs-toggle="modal"
+															data-bs-target="#lotTrackingModal"
+													>
+											</div>
+									</div>
+							</div>
+					</div>
+
+					<!-- Modale pour zoomer l'image "Lot Tracking" -->
+					<div class="modal fade" id="lotTrackingModal" tabindex="-1" aria-labelledby="lotTrackingModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered modal-xl">
+									<div class="modal-content">
+											<div class="modal-header">
+													<h5 class="modal-title" id="lotTrackingModalLabel">Lot Tracking Details</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body text-center">
+													<img src="images/lot-tracking.png" class="modal-img" alt="Lot Tracking Interface">
+											</div>
+									</div>
+							</div>
+					</div>
+
+					<!-- Feature 2: Feeding Records avec zoom -->
+					<div class="row align-items-center mb-5">
+							<div class="col-md-6 order-md-2">
+									<h3 class="fw-bold mb-3" style="color: #2c3e50;">Feeding Records</h3>
+									<p class="text-muted lh-lg">
+											Record feedings in seconds: select the pond, food type, and quantity.
+											All data is automatically saved and synchronized.
+									</p>
+									<div class="d-flex gap-2 mt-3">
+											<span class="badge" style="background-color: transparent; color: #539CAC; border: 1px solid #539CAC; border-radius: 20px; padding: 0.5em 1em; font-weight: 500;">Quick entry</span>
+											<span class="badge" style="background-color: transparent; color: #539CAC; border: 1px solid #539CAC; border-radius: 20px; padding: 0.5em 1em; font-weight: 500;">Automatic logs</span>
+									</div>
+							</div>
+							<div class="col-md-6 order-md-1">
+									<div class="card shadow-lg border-0">
+											<div class="card-body p-0">
+													<img
+															src="images/feeding.png"
+															class="img-fluid rounded zoom-cursor"
+															alt="Feeding Records Interface"
+															style="width: 100%; object-fit: cover; border-radius: 10px;"
+															data-bs-toggle="modal"
+															data-bs-target="#feedingModal"
+													>
+											</div>
+									</div>
+							</div>
+					</div>
+
+					<!-- Modale pour zoomer l'image "Feeding Records" -->
+					<div class="modal fade" id="feedingModal" tabindex="-1" aria-labelledby="feedingModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered modal-lg">
+									<div class="modal-content">
+											<div class="modal-header">
+													<h5 class="modal-title" id="feedingModalLabel">Feeding Records Details</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body text-center">
+													<img src="images/feeding.png" class="modal-img" alt="Feeding Records Interface">
+											</div>
+									</div>
+							</div>
+					</div>
+
+					<!-- Feature 3: Measurements avec zoom -->
+					<div class="row align-items-center mb-5">
+							<div class="col-md-6 mx-auto text-center">
+									<div class="feature-icon"><i class="fas fa-thermometer-half"></i></div>
+									<h3 class="fw-bold mb-3" style="color: #2c3e50;">Manual Measurements</h3>
+									<p class="text-muted lh-lg">
+											Log temperature and oxygen levels for precise monitoring.
+									</p>
+									<div class="card shadow-lg border-0 mt-3">
+											<div class="card-body p-0">
+													<img
+															src="images/measurements.png"
+															class="img-fluid rounded zoom-cursor"
+															alt="Measurements Interface"
+															style="width: 100%; object-fit: cover; border-radius: 10px; max-width: 600px;"
+															data-bs-toggle="modal"
+															data-bs-target="#measurementsModal"
+													>
+											</div>
+									</div>
+							</div>
+					</div>
+
+					<!-- Modale pour "Measurements" -->
+					<div class="modal fade" id="measurementsModal" tabindex="-1" aria-labelledby="measurementsModalLabel" aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered modal-xl"> <!-- modal-xl pour une grande taille -->
+									<div class="modal-content">
+											<div class="modal-header">
+													<h5 class="modal-title" id="measurementsModalLabel">Measurements Details</h5>
+													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+											</div>
+											<div class="modal-body text-center">
+													<img src="images/measurements.png" class="modal-img" alt="Measurements Interface">
+											</div>
+									</div>
+							</div>
+					</div>
+						<!-- Section Carte des Bassins avec zoom -->
+						<div class="row mt-5 pt-5">
+								<div class="col-12 text-center">
+										<h3 class="fw-bold mb-4" style="color: #2c3e50;">Our Fish Ponds</h3>
+										<p class="text-muted lh-lg mb-4">
+												Visualize the layout of our fish farm in Brittany.
+												Each pond is tracked individually in Dluzh Breizh Edith.
+										</p>
+										<div class="card shadow-lg border-0 mx-auto" style="max-width: 800px;">
+												<div class="card-body p-0">
+														<img
+																src="images/bassin_card.png"
+																class="img-fluid rounded zoom-cursor"
+																alt="Fish Ponds Map"
+																style="width: 100%; object-fit: cover; border-radius: 10px;"
+																data-bs-toggle="modal"
+																data-bs-target="#bassinsMapModal"
+														>
+												</div>
+										</div>
+								</div>
+						</div>
+
+						<!-- Modale pour zoomer la carte des bassins -->
+						<div class="modal fade" id="bassinsMapModal" tabindex="-1" aria-labelledby="bassinsMapModalLabel" aria-hidden="true">
+								<div class="modal-dialog modal-dialog-centered modal-xl">
+										<div class="modal-content">
+												<div class="modal-header">
+														<h5 class="modal-title" id="bassinsMapModalLabel">Fish Ponds Map</h5>
+														<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+												</div>
+												<div class="modal-body text-center">
+														<img src="images/bassin_card.png" class="modal-img" alt="Fish Ponds Map">
+												</div>
+										</div>
+								</div>
+						</div>
+
+        <!-- About Section -->
+        <section id="about" class="my-5 py-5" style="background-color: #EEF5F7;">
+						<div class="container">
+								<div class="text-center mb-5">
+										<h2 class="fw-bold" style="color: #26484F;">Our Story</h2>
+										<div class="d-flex justify-content-center mb-4">
+												<div style="width: 60px; height: 60px; background-color: #539CAC; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto;">
+														<i class="fas fa-seedling" style="color: white; font-size: 1.8rem;"></i>
+												</div>
+										</div>
+								</div>
+
+								<div class="row align-items-center mb-5">
+										<div class="col-lg-6">
+												<h3 class="fw-bold mb-3" style="color: #26484F;">From the Fish Farm to Digital Innovation</h3>
+												<p class="lh-lg" style="color: #44808D;">
+														I was born and raised in a fish farming family in Brittany. As the daughter and sister of fish farmers,
+														I’ve spent my life surrounded by ponds, trout, and the daily challenges of aquaculture.
+														From a young age, I saw firsthand how <strong>time-consuming and error-prone</strong> manual record-keeping could be—
+														whether it was tracking feedings, monitoring water quality, or managing stock levels.
+												</p>
+												<p class="lh-lg" style="color: #44808D;">
+														After working in <strong>logistics and production</strong>, where I developed a deep understanding of
+														<strong>quality requirements and traceability</strong>, I realized that the tools available to fish farmers
+														were often outdated or ill-suited to their needs. Spreadsheets, paper logs, and whiteboards were the norm,
+														but they came with risks: <strong>lost data, human errors, and inefficiencies</strong> that could impact both
+														productivity and animal welfare.
+												</p>
+										</div>
+										<div class="col-lg-6">
+												<img
+														src="images/moi.jpg"
+														class="img-fluid rounded shadow"
+														alt="Anne-Cécile in the fish farm"
+														style="width: 100%; object-fit: cover;"
+												>
+										</div>
+								</div>
+
+								<div class="row mb-5">
+										<div class="col-lg-12">
+												<h3 class="fw-bold mb-3 text-center" style="color: #26484F;">Why Dluzh Breizh Edith?</h3>
+												<p class="lh-lg text-center" style="color: #44808D;">
+														Dluzh Breizh Edith was born from a simple idea: <strong>fish farmers deserve tools as dedicated as they are</strong>.
+														I combined my <strong>on-the-ground experience in aquaculture</strong> with my passion for
+														<strong>digital solutions</strong> to create an app that truly understands the needs of small and medium-sized farms.
+												</p>
+												<p class="lh-lg text-center" style="color: #44808D;">
+														With a background in logistics and production, I knew the importance of <strong>traceability, precision, and efficiency</strong>.
+														But I also knew that most digital tools were either too complex or too generic for fish farmers.
+														So, I built Dluzh Breizh Edith to be:
+												</p>
+												<div class="row mt-4 g-3">
+														<div class="col-md-4 text-center">
+																<div class="p-3" style="background-color: #D5E7EB; border-radius: 10px; height: 100%;">
+																		<i class="fas fa-fish fa-2x mb-2" style="color: #539CAC;"></i>
+																		<h5 style="color: #26484F;">By Fish Farmers</h5>
+																		<p class="small" style="color: #44808D;">
+																				Designed with the input of real fish farmers, including my family.
+																		</p>
+																</div>
+														</div>
+														<div class="col-md-4 text-center">
+																<div class="p-3" style="background-color: #D5E7EB; border-radius: 10px; height: 100%;">
+																		<i class="fas fa-chart-line fa-2x mb-2" style="color: #539CAC;"></i>
+																		<h5 style="color: #26484F;">For Traceability</h5>
+																		<p class="small" style="color: #44808D;">
+																				Built to meet the strictest quality and traceability standards.
+																		</p>
+																</div>
+														</div>
+														<div class="col-md-4 text-center">
+																<div class="p-3" style="background-color: #D5E7EB; border-radius: 10px; height: 100%;">
+																		<i class="fas fa-heart fa-2x mb-2" style="color: #539CAC;"></i>
+																		<h5 style="color: #26484F;">With Passion</h5>
+																		<p class="small" style="color: #44808D;">
+																				A tool created out of love for aquaculture and innovation.
+																		</p>
+																</div>
+														</div>
+												</div>
+										</div>
+								</div>
+
+								<div class="row align-items-center">
+										<div class="col-lg-6">
+												<img
+														src="images/team.jpg"
+														class="img-fluid rounded shadow"
+														alt="Family fish ponds"
+														style="width: 100%; height: 300px; object-fit: cover;"
+												>
+										</div>
+										<div class="col-lg-6">
+												<h3 class="fw-bold mb-3" style="color: #26484F;">A Tool for the Future</h3>
+												<p class="lh-lg" style="color: #44808D;">
+														Today, Dluzh Breizh Edith helps fish farmers like my family <strong>save time, reduce errors, and focus on what matters most</strong>:
+														raising healthy fish. By digitizing daily tasks—like feeding records, water quality checks, and stock management—
+														we’re making it easier to meet quality standards and improve productivity.
+												</p>
+												<p class="lh-lg" style="color: #44808D;">
+														This project is also my <a href="https://www.holbertonschool.com" target="_blank" style="color: #539CAC;">Portfolio Project for Holberton School</a>,
+														where I’ve honed my skills in <strong>Django, PostgreSQL, and web development</strong> to build tools that make a real difference.
+														Because at the end of the day, Dluzh Breizh Edith isn’t just an app—it’s a bridge between tradition and innovation,
+														and a testament to the hard work of fish farmers everywhere.
+												</p>
+												<div class="text-center mt-4">
+														<a href="mailto:anne-cecile.colleter@live.fr?subject=Let's talk about Dluzh Breizh Edith" class="btn" style="background-color: #539CAC; color: white;">
+																<i class="fas fa-paper-plane me-2"></i>Let's Talk
+														</a>
+												</div>
+										</div>
+								</div>
+						</div>
+				</section>
+				<section class="py-5" style="background-color: #EEF5F7;">
+						<div class="container">
+								<div class="text-center mb-5">
+										<h2 class="fw-bold" style="color: #26484F;">Our Fish Farm</h2>
+										<p class="text-muted lh-lg mx-auto" style="max-width: 700px;">
+												Located in Brittany, our family-run farm combines tradition and innovation
+												to raise high-quality trout in optimal conditions.
+										</p>
+								</div>
+
+								<!-- Grande photo des bassins -->
+								<div class="row g-4 align-items-center">
+										<div class="col-lg-7">
+												<img
+														src="images/oxy.webp"
+														class="img-fluid rounded shadow"
+														alt="Our fish ponds with water jets"
+														style="width: 100%; height: 350px; object-fit: cover;"
+												>
+										</div>
+										<div class="col-lg-5">
+												<div class="row g-3">
+														<!-- Photo truites -->
+														<div class="col-12">
+																<img
+																		src="images/truites-groupes.jpg"
+																		class="img-fluid rounded shadow mb-3 zoom-cursor"
+																		alt="Our trout in groups"
+																		style="width: 100%; height: 170px; object-fit: cover;"
+																		data-bs-toggle="modal"
+																		data-bs-target="#farmModal1"
+																>
+														</div>
+														<!-- Photo équipe -->
+														<div class="col-12">
+																<img
+																		src="images/aliment.webp"
+																		class="img-fluid rounded shadow zoom-cursor"
+																		alt="Our team feeding the fish"
+																		style="width: 100%; height: 170px; object-fit: cover;"
+																		data-bs-toggle="modal"
+																		data-bs-target="#farmModal2"
+																>
+														</div>
+												</div>
+										</div>
+								</div>
+
+								<!-- Légendes -->
+								<div class="row mt-4 text-center">
+										<div class="col-lg-4">
+												<h4 style="color: #539CAC;">Our Ponds</h4>
+												<p class="text-muted small">
+														Designed for optimal water flow and oxygen levels,
+														our ponds ensure the well-being of our trout.
+												</p>
+										</div>
+										<div class="col-lg-4">
+												<h4 style="color: #539CAC;">Our Trout</h4>
+												<p class="text-muted small">
+														Healthy trout, raised with natural feed and constant monitoring.
+												</p>
+										</div>
+										<div class="col-lg-4">
+												<h4 style="color: #539CAC;">Our Team</h4>
+												<p class="text-muted small">
+														A family team passionate about sustainable fish farming.
+												</p>
+										</div>
+								</div>
+
+								<!-- Modales pour zoom -->
+								<div class="modal fade" id="farmModal1" tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered modal-lg">
+												<div class="modal-content">
+														<div class="modal-body p-0">
+																<img src="images/truites-groupes.jpg" class="modal-img" alt="Our trout in groups">
+														</div>
+												</div>
+										</div>
+								</div>
+								<div class="modal fade" id="farmModal2" tabindex="-1" aria-hidden="true">
+										<div class="modal-dialog modal-dialog-centered modal-lg">
+												<div class="modal-content">
+														<div class="modal-body p-0">
+																<img src="images/aliment.webp" class="modal-img" alt="Our team feeding the fish">
+														</div>
+												</div>
+										</div>
+								</div>
+						</div>
+				</section>
+
+        <!-- Demo Video Section -->
         <section class="text-center my-5">
-            <p>Intéressé par une démo ou une collaboration ?</p>
-            <a href="mailto:ton-email@example.com" class="btn btn-outline-primary">Nous contacter</a>
+            <h2>See It in Action</h2>
+            <div class="ratio ratio-16x9 mx-auto" style="max-width: 800px;">
+								<video
+										src="images/demo.mp4"
+										controls
+										muted
+										playsinline
+										class="rounded shadow"
+										style="width: 100%; object-fit: cover;"
+								>
+										Your browser does not support the video tag.
+								</video>
+						</div>
+
+        <!-- Contact Section -->
+        <section id="contact" class="text-center my-5">
+            <h2>Try It Today</h2>
+            <p>Want to test the app or suggest a feature?</p>
+            <a href="mailto:anne-cecile.colleter@live.fr" class="btn btn-outline-primary">Contact Us</a>
         </section>
 
         <!-- Footer -->
-        <footer class="text-center py-3">
-            <a href="https://github.com/ton-utilisateur/dluzh-breizh-edith" target="_blank" class="me-3">Code source</a>
-            <p>&copy; 2025 Dluzh Breizh Edith</p>
-        </footer>
+       <footer style="background-color: #35646E; color: #EEF5F7;">
+						<div class="container py-4 text-center">
+								<p class="mb-2">&copy; 2025 Dluzh Breizh Edith</p>
+								<p class="mb-0 small">
+										Currently in development – <a href="mailto:anne-cecile.colleter@live.fr" class="text-decoration-underline">contact us</a> for updates.
+								</p>
+						</div>
+				</footer>
     </div>
 
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
