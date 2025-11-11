@@ -182,28 +182,39 @@
     .feature-icon i {
         color: #539CAC; /* 500 */
     }
+		:root {
+				--login-border: #539CAC; /* Couleur bleue principale de ta palette */
+		}
+
 </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-							<img
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top" style="background-color: #35646E;">
+				<div class="container">
+						<!-- Logo seul -->
+						<a class="navbar-brand d-flex justify-content-center" href="#">
+								<img
 										src="images/logo.jpg"
-										alt="Truites de la Vallée Logo"
-										class="me-2"
-										style="height: 40px; width: auto;"
+										alt="Dluzh Breizh Edith Logo"
+										style="
+												border-radius: 50px;
+												max-width: 100px;
+												height: auto;
+												display: block;
+												margin: 0 auto; /* Centre le logo */
+										"
 								>
-								<span>Dluzh Breizh Edith</span>
 						</a>
-            <div class="navbar-nav">
-                <a class="nav-link" href="#features">Features</a>
-                <a class="nav-link" href="#about">Our Story</a>
-                <a class="nav-link" href="#contact">Contact</a>
-            </div>
-        </div>
-    </nav>
+
+						<!-- Le reste de ta navigation -->
+						<div class="navbar-nav">
+								<a class="nav-link" href="#features">Features</a>
+								<a class="nav-link" href="#about">Our Story</a>
+								<a class="nav-link" href="#contact">Contact</a>
+						</div>
+				</div>
+		</nav>
 
     <div class="container">
         <!-- Hero Section -->
