@@ -121,6 +121,31 @@
         border-radius: 10px;
         border-left: 4px solid #539CAC; /* 500 */
     }
+		/* Style pour les icônes de contact */
+		.contact-icon {
+				transition: all 0.3s;
+				color: #26484F;
+		}
+
+		.contact-icon:hover {
+				color: #539CAC;
+				transform: scale(1.1);
+		}
+
+		/* Style pour les boutons de contact */
+		.btn-contact {
+				background-color: #539CAC;
+				color: white;
+				border: none;
+				padding: 0.5rem 1.5rem;
+				border-radius: 5px;
+				transition: all 0.3s;
+		}
+
+		.btn-contact:hover {
+				background-color: #44808D;
+				transform: translateY(-2px);
+		}
 
     /* Pied de page */
     footer {
@@ -572,7 +597,7 @@
 										<div class="modal-dialog modal-dialog-centered modal-lg">
 												<div class="modal-content">
 														<div class="modal-body p-0">
-																<img src="images/aliment.webp" class="modal-img" alt="Our team feeding the fish">
+																<img src="images/aliment.webp" class="modal-img" alt="Our feed the fish">
 														</div>
 												</div>
 										</div>
@@ -597,11 +622,41 @@
 						</div>
 
         <!-- Contact Section -->
-        <section id="contact" class="text-center my-5">
-            <h2>Try It Today</h2>
-            <p>Want to test the app or suggest a feature?</p>
-            <a href="mailto:anne-cecile.colleter@live.fr" class="btn btn-outline-primary">Contact Us</a>
-        </section>
+        <section id="contact" class="text-center my-5 py-4" style="background-color: #EEF5F7; border-radius: 10px;">
+						<div class="container">
+								<h2 class="mb-4" style="color: #26484F;">Get in Touch</h2>
+								<p class="text-muted mb-4">
+										Want to test the app, suggest a feature, or collaborate?
+										<br>
+										I’d love to hear from you!
+								</p>
+
+								<!-- Boutons de contact -->
+								<div class="d-flex justify-content-center gap-3 flex-wrap mb-4">
+										<!-- Email -->
+										<a href="mailto:anne-cecile.colleter@live.fr?subject=About Dluzh Breizh Edith" class="btn btn-primary d-flex align-items-center btn-contact">
+												<i class="fas fa-envelope me-2"></i> Email
+										</a>
+
+										<!-- GitHub -->
+										<a href="https://github.com/annececile2935" target="_blank" class="btn d-flex align-items-center btn-contact" style="background-color: #26484F;">
+												<i class="fab fa-github me-2"></i> GitHub
+										</a>
+
+										<!-- LinkedIn -->
+										<a href="https://www.linkedin.com/in/ac-colléter/" target="_blank" class="btn d-flex align-items-center btn-contact" style="background-color: #0077B5;">
+												<i class="fab fa-linkedin me-2"></i> LinkedIn
+										</a>
+								</div>
+
+								<!-- Texte supplémentaire -->
+								<p class="text-muted small">
+										For demos, questions, or collaborations, don’t hesitate to reach out.
+										<br>
+										You can also explore the <a href="https://github.com/ton-utilisateur" target="_blank" style="color: #539CAC;">source code</a> or connect on <a href="https://www.linkedin.com/in/anne-cecile-colleter/" target="_blank" style="color: #539CAC;">LinkedIn</a>.
+								</p>
+						</div>
+				</section>
 
         <!-- Footer -->
        <footer style="background-color: #35646E; color: #EEF5F7;">
